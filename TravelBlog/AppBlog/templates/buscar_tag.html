@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block codigoDinamico %}
+<div class="container px-5 my-5">
+    <form action="" method="get">
+        <input type="text" name="id_tag", id="id_tag">
+        <input type="submit" value="Buscar"> 
+    
+        {% if tags %}
+            <ul>
+                {% for tag in tags %}
+                <li>El tag de id {{tag.id_post}} nombre {{tag.tag}} </li>
+                
+                {% endfor %}
+            </ul>
+    
+            
+        
+        {% else %}
+            <p>No hay datos.</p>
+    
+        {% endif %}
+    </form>
+
+</div>
+<!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+
+{%endblock%}

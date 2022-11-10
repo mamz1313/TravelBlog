@@ -21,4 +21,10 @@ urlpatterns = [
     path('building/', building, name='building'),
     path('', index, name='index'),
     path('blog/', blog, name='blog'),
+    path('form_suscriptor/', form_suscriptor, name='form_suscriptor'),
+    path('form_post/', form_post, name='form_post'),
+    path('form_tag/', form_tag, name='form_tag'),
+    path('buscar_suscriptor/', buscar_suscriptor, name='buscar_suscriptor'),
+    path('buscar_post/', buscar_post, name='buscar_post'),
+    path('buscar_tag/', buscar_tag, name='buscar_tag'),
 ]

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block codigoDinamico %}
+
+<div class="container px-5 my-5">
+    <form action="" method="get">
+        <input type="text" name="id_post", id="id_post">
+        <input type="submit" value="Buscar"> 
+    
+        {% if posts %}
+            <ul>
+                {% for post in posts %}
+                <li>El post de id {{post.id_post}} nombre {{post.nombre}} fecha de publicacion {{post.fecha_publicacion}} </li>
+                {% endfor %}
+            </ul>
+    
+        {% else %}
+            <p>No hay datos.</p>
+    
+        {% endif %}
+    </form>
+
+   
+</div>
+<!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+
+{%endblock%}
