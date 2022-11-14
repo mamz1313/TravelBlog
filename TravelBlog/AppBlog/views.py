@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from .forms import *
+from django.forms import ModelForm
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -38,7 +39,7 @@ def form_post(request):
         if formulario.is_valid():
             formulario_limpio = formulario.cleaned_data
             
-            post = Post(id_post=formulario_limpio['id_post'], nombre=formulario_limpio['nombre'],fecha_publicacion=formulario_limpio['fecha_publicacion'],img=formulario_limpio['img'],descripcion=formulario_limpio['descripcion'])
+            post = Post(nombre=formulario_limpio['nombre'],fecha_publicacion=formulario_limpio['fecha_publicacion'],img=formulario_limpio['img'],descripcion=formulario_limpio['descripcion'])
             post.save()
             return render(request,'index.html')
         else:
@@ -47,20 +48,32 @@ def form_post(request):
         
     return render(request, 'form_post.html',{'formulario':formulario})
 
+
 def form_tag(request):
-    formulario = Taguear()
+    formulario = Taguear(request.POST or None)
     
     if request.method == 'POST':
         formulario = Taguear(request.POST)
     
-        if formulario.is_valid():
+        if request.POST and formulario.is_valid():
             formulario_limpio = formulario.cleaned_data
-            
-            post = Tags(id_post=formulario_limpio['id_post'],tag=formulario_limpio['tag'])
-            post.save()
+            # instance = Tags.id_post.set(Post)
+            # tag = Tags(id_tag=formulario_limpio['id_tag'],tag=formulario_limpio['tag'])
+            id_tag = formulario_limpio['id_tag']
+            tag = formulario_limpio['tag']
+            obj = Tags(
+                id_tag=id_tag,
+                tag = tag
+            )
+            obj.save()
+            # tag.id_post.set(formulario_limpio['id_post'])
+            form2 = Taguear(request.POST, instance=obj)
+            form2.save(commit=False)
+            form2.save_m2m()    
             return render(request,'index.html')
-        else:
-            formulario = Taguear()
+    
+    else:
+        formulario = Taguear()
         
         
     return render(request, 'form_tag.html',{'formulario':formulario})
@@ -80,7 +93,10 @@ def buscar_post(request):
     if request.GET.get('id_post', False):
         id_post = request.GET['id_post']
         post = Post.objects.filter(id_post__icontains=id_post)
-        return render(request, 'buscar_post.html',{'posts':post})
+        # tags = Post.object.filter(Tags__id_tag__icointains=id_post)
+        tag = Tags.objects.filter(id_post__id_post__icontains=id_post)
+        return render(request, 'buscar_post.html',{'posts':post, 'tags':tag})
+        # return render(request, 'buscar_post.html',{'posts':post})
     else:
         respuesta = 'No hay datos'
     return render(request,'buscar_post.html', {'respuesta': respuesta})
@@ -89,7 +105,7 @@ def buscar_tag(request):
     
     if request.GET.get('id_tag', False):
         id_tag = request.GET['id_tag']
-        tag = Tags.objects.filter(id_post__icontains=id_tag)
+        tag = Tags.objects.filter(id_tag__exact=id_tag)
         return render(request, 'buscar_tag.html',{'tags':tag})
     else:
         respuesta = 'No hay datos'
