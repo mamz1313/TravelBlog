@@ -13,6 +13,11 @@
             <ul>
                 {% for post in posts %}
                 <li>El post de id {{post.id_post}} nombre {{post.nombre}} fecha de publicacion {{post.fecha_publicacion}} </li>
+                tags:
+                    {% for tag in tags %}
+                    <li>{{tag.tag}} </li>
+                    
+                    {% endfor %}
                 {% endfor %}
             </ul>
     
@@ -21,7 +26,6 @@
     
         {% endif %}
     </form>
-
    
 </div>
 <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->

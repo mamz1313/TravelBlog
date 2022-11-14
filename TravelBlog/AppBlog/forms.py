@@ -1,4 +1,7 @@
 from django import forms
+from django.forms import ModelForm
+from django.contrib.auth.models import User
+from .models import *
 
 class CrearSuscriptor(forms.Form):
     nombre = forms.CharField(max_length=60)
@@ -7,13 +10,24 @@ class CrearSuscriptor(forms.Form):
     birthday = forms.DateField()
     recibir_correos = forms.BooleanField()
 
-class CrearPost(forms.Form):
-    id_post = forms.IntegerField()
+class CrearPost(ModelForm):
+    # id_post = forms.IntegerField()
     nombre = forms.CharField(max_length=50)
     fecha_publicacion = forms.DateField()
     img = forms.CharField(max_length=100)
+    # img = forms.ImageField()
     descripcion = forms.CharField(max_length=100)
     
-class Taguear(forms.Form):
-    id_post = forms.IntegerField()
+    class Meta:
+        model = Post
+        fields = '__all__'
+    
+class Taguear(ModelForm):
+    id_tag = forms.IntegerField(label='id_tag')
+    # id_post = forms.ModelChoiceField(queryset=Post.objects.all(), empty_label='Seleccione un id post')
+    id_post = forms.ModelMultipleChoiceField(queryset=Post.objects.all().order_by('nombre'),label='id_post', widget=forms.CheckboxSelectMultiple)
     tag = forms.CharField(max_length=50)
+    
+    class Meta:
+        model = Tags
+        fields = '__all__'
