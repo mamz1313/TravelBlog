@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block codigoDinamico %}
+
+<div class="container px-5 my-5">
+    <header class="mb-4">
+        <!-- Post title-->
+        <h1 class="fw-bolder mb-1">Recorriendo el Perú!</h1>
+        <!-- Post meta content-->
+        <div class="text-muted fst-italic mb-2">Listado completo de los Suscrptores registrados a la fecha.</div>
+        
+    </header>
+
+    {% for suscriptor in object_list %}
+        <li>ID: {{suscriptor.id_suscriptor}}  Nombre: {{suscriptor.nombre}} </li>
+        <button>
+            <a href="{% url 'Suscriptor_DetailView' suscriptor.id_suscriptor %}">Ver Detalles</a>
+        </button>
+        <button>
+            <a href="{% url 'Suscriptor_DeleteView' suscriptor.id_suscriptor %}">Eliminar</a>
+        </button>
+        <button>
+            <a href="{% url 'Suscriptor_UpdateView' suscriptor.id_suscriptor %}">Actualizar</a>
+        </button>
+        
+    {% endfor %}
+        <button>
+            <a href="{% url 'Suscriptor_CreateView' %}">Crear Suscriptor</a>
+        </button>
+        
+</div>
+<!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+
+{%endblock%}

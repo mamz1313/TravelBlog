@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block codigoDinamico %}
+
+<div class="container px-5 my-5">
+    <header class="mb-4">
+        <!-- Post title-->
+        <h1 class="fw-bolder mb-1">Detalles del Tag {{object.tag}}</h1>
+        <!-- Post meta content-->
+        <div class="text-muted fst-italic mb-2">Compartenos tu experiencia en ese asombroso viaje.</div>
+        
+    </header>
+    
+    <li>ID: {{object.id_tag}} </li>
+    <li>Nombre: {{object.tag}} </li>
+    <li>Post: {{object.get_context_data}} </li>
+    <button>
+        <a href="{% url 'Tags_ListView' %}">Regresar</a>
+    </button>
+    
+   
+</div>
+<!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+{%endblock%}

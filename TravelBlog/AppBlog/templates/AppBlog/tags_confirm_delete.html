@@ -1,0 +1,7 @@
+<form method="post"> {%csrf_token %}
+    {{object.id}}: ¿Estas seguro que deseas eliminar al Tag:? {{object}}?
+    <input type="submit" value="Eliminar">
+</form>
+<button>
+    <a href="{% url 'Tags_ListView' %}">Regresar</a>
+</button>

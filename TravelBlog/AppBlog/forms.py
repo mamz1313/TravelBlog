@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
 class CrearSuscriptor(forms.Form):
@@ -9,6 +10,10 @@ class CrearSuscriptor(forms.Form):
     email = forms.EmailField()
     birthday = forms.DateField()
     recibir_correos = forms.BooleanField()
+    
+    class Meta:
+        model = Suscriptor
+        fields = '__all__'
 
 class CrearPost(ModelForm):
     # id_post = forms.IntegerField()
@@ -31,3 +36,28 @@ class Taguear(ModelForm):
     class Meta:
         model = Tags
         fields = '__all__'
+        
+
+class SignUpForm(UserCreationForm):
+    
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'email',
+            'password1',
+            'password2'
+        ]
+        
+class UserEditForm(UserCreationForm):
+    
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'email',
+            'password1',
+            'password2'
+        ]
+        help_texts = {k: '' for k in fields}
+        

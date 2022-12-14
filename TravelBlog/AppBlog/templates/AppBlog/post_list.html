@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block codigoDinamico %}
+
+<div class="container px-5 my-5">
+    <header class="mb-4">
+        <!-- Post title-->
+        <h1 class="fw-bolder mb-1">Recorriendo el Perú!</h1>
+        <!-- Post meta content-->
+        <div class="text-muted fst-italic mb-2">Listado completo de los Posts publicados a la fecha.</div>
+        
+    </header>
+
+    {% for post in object_list %}
+        <li>ID: {{post.id_post}}  Post:{{post.nombre}} </li>
+        <button>
+            <a href="{% url 'Post_DetailView' post.id_post %}">Ver Detalles</a>
+        </button>
+        <button>
+            <a href="{% url 'Post_DeleteView' post.id_post %}">Eliminar</a>
+        </button>
+        <button>
+            <a href="{% url 'Post_UpdateView' post.id_post %}">Actualizar</a>
+        </button>
+        
+    {% endfor %}
+        <button>
+            <a href="{% url 'Post_CreateView' %}">Crear Post</a>
+        </button>
+        
+</div>
+<!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+
+{%endblock%}

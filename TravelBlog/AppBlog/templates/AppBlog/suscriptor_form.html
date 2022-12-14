@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block codigoDinamico %}
+
+<div class="container px-5 my-5">
+    <header class="mb-4">
+        <!-- Post title-->
+        <h1 class="fw-bolder mb-1">Registrate!</h1>
+        <!-- Post meta content-->
+        <div class="text-muted fst-italic mb-2">Se parte de nuestros viajes.</div>
+        
+    </header>
+    <form method="post"> {%csrf_token %}
+        {{form.as_p}}
+        <button type="submit" value="enviar">Enviar</button>
+    <button>
+        <a href="{% url 'Suscriptor_ListView' %}">Regresar</a>
+    </button>
+    </form>
+    
+</div>
+<!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+
+{%endblock%}

@@ -1,0 +1,7 @@
+<form method="post"> {%csrf_token %}
+    {{object.id}}: ¿Estas seguro que deseas eliminar el curso? {{object}}?
+    <input type="submit" value="Eliminar">
+</form>
+<button>
+    <a href="{% url 'Post_ListView' %}">Regresar</a>
+</button>

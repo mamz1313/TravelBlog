@@ -15,25 +15,58 @@
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+                
+            
+
             <div class="container">
                 <a class="navbar-brand" href="{% url 'index'%}">TravelBlog</a>
-                <a class="navbar-brand" href="{% url 'buscar_suscriptor'%}">BuscarSuscriptor</a>
-                <a class="navbar-brand" href="{% url 'buscar_post'%}">BuscarPost</a>
-                <a class="navbar-brand" href="{% url 'buscar_tag'%}">BuscarTag</a>
+
+
+                <div class="dropdown">
+                    <a class="navbar-brand" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{% url 'buscar_post'%}">Buscar Blog</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Post_CreateView'%}">Crear Post</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Post_ListView'%}">Lista de Blogs</a></li>
+                    </ul>
+                    
+                  </div>
+
+                <div class="dropdown">
+                    <a class="navbar-brand" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Suscriptor</a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{% url 'buscar_suscriptor'%}">Buscar Suscriptor</a></li>
+                        <li><a class="dropdown-item" href="{% url 'form_suscriptor'%}">Crear Suscriptor</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Suscriptor_ListView'%}">Lista de Suscriptores</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <a class="navbar-brand" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Tag</a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{% url 'buscar_tag'%}">Buscar Tag</a></li>
+                        <li><a class="dropdown-item" href="{% url 'form_tag'%}">Crear Tag</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Tags_ListView'%}">Lista de Tags</a></li>
+                    </ul>
+                </div>
+
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'index'%}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'building'%}">Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'form_suscriptor'%}">NewSuscriptor</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'form_tag'%}">NewTag</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'form_post'%}">NewPost</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'building'%}">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'nosotros'%}">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Logout'%}">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Page header with logo and tagline-->
+
         {% block codigoDinamico %}
         {% endblock%}
 
@@ -44,6 +77,8 @@
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script src="https://kit.fontawesome.com/f91d784452.js" crossorigin="anonymous"></script>
         <!-- Core theme JS-->
         {% comment %} <script src="js/scripts.js"></script> {% endcomment %}
 

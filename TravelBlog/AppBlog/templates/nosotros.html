@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block codigoDinamico %}
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src={% static 'AppBlog/assets/img/aboutUs1.JPG'%} alt="..." /></div>
+            <div class="col-md-6">
+                <h1 class="display-5 fw-bolder">Nosotros</h1>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                <!-- Facebook -->
+
+                <div class="d-flex">
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col">
+                      <div class="card">
+                        <img src={% static 'AppBlog/assets/img/Fernando.jpg'%} class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Fernando</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          
+                          <div class="d-flex justify-content-around" role="group" aria-label="Basic example">
+                            <!-- Facebook -->
+                            <a style="color: #3b5998;" href="#!" role="button">
+                                <i class="fab fa-facebook-f fa-lg"></i>
+                            </a>
+                            <!-- Twitter -->
+                            <a style="color: #55acee;" href="#!" role="button">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </a>
+                            <!-- Google -->
+                            <a style="color: #dd4b39;" href="#!" role="button">
+                                <i class="fab fa-google fa-lg"></i>
+                            </a>
+                            <!-- Instagram -->
+                            <a style="color: #ac2bac;" href="#!" role="button">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src={% static 'AppBlog/assets/img/Manuel.jpg'%} class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Manuel</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          <div class="d-flex justify-content-around" role="group" aria-label="Basic example">
+                            <!-- Facebook -->
+                            <a style="color: #3b5998;" href="#!" role="button">
+                                <i class="fab fa-facebook-f fa-lg"></i>
+                            </a>
+                            <!-- Twitter -->
+                            <a style="color: #55acee;" href="#!" role="button">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </a>
+                            <!-- Google -->
+                            <a style="color: #dd4b39;" href="#!" role="button">
+                                <i class="fab fa-google fa-lg"></i>
+                            </a>
+                            <!-- Instagram -->
+                            <a style="color: #ac2bac;" href="#!" role="button">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
+
